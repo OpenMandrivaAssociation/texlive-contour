@@ -1,3 +1,9 @@
+# revision 18950
+# category Package
+# catalog-ctan /macros/latex/contrib/contour
+# catalog-date 2006-12-09 15:50:57 +0100
+# catalog-license lppl
+# catalog-version 2.14
 Name:		texlive-contour
 Version:	2.14
 Release:	1
@@ -52,6 +58,7 @@ need of a coloured box around the text.
 #- source
 %doc %{_texmfdistdir}/source/latex/contour/contour.dtx
 %doc %{_texmfdistdir}/source/latex/contour/contour.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -62,3 +69,5 @@ need of a coloured box around the text.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
