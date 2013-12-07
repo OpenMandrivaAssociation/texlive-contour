@@ -6,7 +6,7 @@
 # catalog-version 2.14
 Name:		texlive-contour
 Version:	2.14
-Release:	4
+Release:	5
 Summary:	Print a coloured contour around text
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/contour
