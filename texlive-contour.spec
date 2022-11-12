@@ -1,19 +1,13 @@
-# revision 18950
-# category Package
-# catalog-ctan /macros/latex/contrib/contour
-# catalog-date 2006-12-09 15:50:57 +0100
-# catalog-license lppl
-# catalog-version 2.14
 Name:		texlive-contour
-Version:	2.14
-Release:	11
+Version:	18950
+Release:	1
 Summary:	Print a coloured contour around text
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/contour
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ in order to enable printing text over a background without the
 need of a coloured box around the text.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -51,24 +45,11 @@ need of a coloured box around the text.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.14-2
-+ Revision: 750544
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 2.14-1
-+ Revision: 718147
-- texlive-contour
-- texlive-contour
-- texlive-contour
-- texlive-contour
-
