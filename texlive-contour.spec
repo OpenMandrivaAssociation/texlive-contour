@@ -1,6 +1,6 @@
 Name:		texlive-contour
 Version:	18950
-Release:	1
+Release:	2
 Summary:	Print a coloured contour around text
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/contour
