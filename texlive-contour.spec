@@ -1,55 +1,25 @@
-Name:		texlive-contour
-Version:	18950
-Release:	2
+%global tl_name contour
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.14
+Release:	%{tl_revision}.1
 Summary:	Print a coloured contour around text
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/contour
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.source.r%{version}.tar.xz
+License:	lppl1
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/contour.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package generates a coloured contour around a given text
-in order to enable printing text over a background without the
-need of a coloured box around the text.
+This package generates a coloured contour around a given text in order
+to enable printing text over a background without the need of a coloured
+box around the text.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/contour/contour.cfg
-%{_texmfdistdir}/tex/latex/contour/contour.sty
-%{_texmfdistdir}/tex/latex/contour/dvips.cnt
-%{_texmfdistdir}/tex/latex/contour/dvipsone.cnt
-%{_texmfdistdir}/tex/latex/contour/pdftex.cnt
-%{_texmfdistdir}/tex/latex/contour/vtex.cnt
-%doc %{_texmfdistdir}/doc/latex/contour/ChangeLog
-%doc %{_texmfdistdir}/doc/latex/contour/Makefile
-%doc %{_texmfdistdir}/doc/latex/contour/README
-%doc %{_texmfdistdir}/doc/latex/contour/contour.pdf
-%doc %{_texmfdistdir}/doc/latex/contour/contourtest.tex
-#- source
-%doc %{_texmfdistdir}/source/latex/contour/contour.dtx
-%doc %{_texmfdistdir}/source/latex/contour/contour.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
